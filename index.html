@@ -4,6 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Bowzer Machine Movers CC | Rigging & Lifting Specialists</title>
+<link rel="icon" type="image/png" href="bowzer-nav.png">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -11,7 +12,11 @@
     --navy:#0A1C3E;
     --navy2:#0F2D5E;
     --blue:#1565C0;
+    --blue2:#1976D2;
     --accent:#2196F3;
+    --accent2:#42A5F5;
+    --steel:#263238;
+    --light:#E3F0FF;
     --white:#ffffff;
     --gray:#90A4AE;
   }
@@ -25,12 +30,17 @@
     backdrop-filter:blur(10px);
     border-bottom:2px solid var(--accent);
     display:flex;align-items:center;justify-content:space-between;
-    padding:0 48px;height:80px;
+    padding:0 48px;height:72px;
   }
-  .nav-logo-img {
-    height: 55px; /* Adjust this to make nav logo bigger/smaller */
-    width: auto;
+  .nav-logo{display:flex;align-items:center;gap:16px;}
+  .nav-logo-img{height:50px; width:auto;}
+  .nav-brand{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:900;font-size:26px;
+    color:var(--white);letter-spacing:2px;
+    line-height:1;
   }
+  .nav-brand span{color:var(--accent); font-size: 13px; display: block; letter-spacing: 3px; margin-top: 4px;}
   .nav-links{display:flex;gap:36px;list-style:none;}
   .nav-links a{
     font-size:13px;font-weight:600;letter-spacing:2px;
@@ -43,7 +53,9 @@
     padding:10px 24px;border-radius:3px;
     font-size:13px;font-weight:700;letter-spacing:1.5px;
     text-transform:uppercase;text-decoration:none;
+    transition:background 0.2s,transform 0.15s;
   }
+  .nav-cta:hover{background:var(--blue2);transform:translateY(-1px);}
 
   /* ── HERO ── */
   .hero{
@@ -51,11 +63,12 @@
     background:linear-gradient(135deg,#050E1F 0%,#0A1C3E 45%,#0D2348 100%);
     display:flex;align-items:center;
     padding:120px 48px 80px;
-    position:relative;
+    position:relative;overflow:hidden;
   }
   .hero-grid{
     display:grid;grid-template-columns:1fr 1fr;
     gap:80px;align-items:center;max-width:1200px;margin:0 auto;width:100%;
+    position:relative;z-index:1;
   }
   .hero-title{
     font-family:'Barlow Condensed',sans-serif;
@@ -69,13 +82,29 @@
     margin-bottom:40px;max-width:480px;
   }
 
-  /* Main Hero Logo Image */
+  /* Floating Animation for Hero Image */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
   .hero-main-img {
     width: 100%;
     max-width: 450px;
     height: auto;
     filter: drop-shadow(0 20px 50px rgba(0,0,0,0.5));
+    animation: float 6s ease-in-out infinite;
   }
+
+  /* ── STATS STRIP ── */
+  .stats-strip{
+    background:#050E1F;
+    border-top:2px solid rgba(33,150,243,0.2);
+    border-bottom:2px solid rgba(33,150,243,0.2);
+    padding:32px 48px;
+  }
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1000px;margin:0 auto;}
+  .stat-num{font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:48px; color:var(--accent); line-height:1;}
+  .stat-label{font-size:12px; letter-spacing:2px; color:var(--gray); text-transform:uppercase;}
 
   /* ── SECTIONS ── */
   .section{padding:100px 48px;}
@@ -85,7 +114,7 @@
     font-weight:900;font-size:52px;
     color:var(--white);margin-bottom:48px;
   }
-
+  
   .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
   .service-card{
     background:#0D2348;padding:40px 32px;
@@ -119,6 +148,8 @@
     .hero-grid,.services-grid,.contact-grid{grid-template-columns:1fr;}
     .nav-links{display:none;}
     .hero-main-img { max-width: 300px; margin-top: 40px; }
+    nav{padding: 0 20px;}
+    .section{padding: 60px 24px;}
   }
 </style>
 </head>
@@ -127,7 +158,9 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <img src="bowzer-logo.png" alt="Bowzer Logo" class="nav-logo-img">
+    <!-- Simplified nav logo (Icon only) -->
+    <img src="bowzer-nav.png" alt="Bowzer" class="nav-logo-img">
+    <div class="nav-brand">BOWZER <span>MACHINE MOVERS</span></div>
   </div>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
@@ -141,65 +174,110 @@
 <section class="hero">
   <div class="hero-grid">
     <div>
-      <div style="font-size:12px;font-weight:700;letter-spacing:4px;color:var(--accent);margin-bottom:20px;">RIGGING SPECIALISTS</div>
-      <h1 class="hero-title">BOWZER<br/><span>MACHINE</span><br/>MOVERS</h1>
-      <p class="hero-desc">Professional rigging, heavy lifting and industrial machinery moving services. Trusted by South Africa's major industrial brands for over 25 years.</p>
+      <div style="font-size:12px;font-weight:700;letter-spacing:4px;color:var(--accent);margin-bottom:20px;text-transform:uppercase;">Rigging & Lifting Specialists</div>
+      <h1 class="hero-title">ENGINEERED<br/>TO <span>MOVE</span></h1>
+      <p class="hero-desc">Heavy industrial rigging and precision machinery relocation. Trusted by South Africa's largest manufacturers to move the impossible safely since 1999.</p>
       <div style="display:flex;gap:16px;">
         <a href="#contact" class="nav-cta" style="padding:16px 36px;">Request a Quote</a>
       </div>
     </div>
     <div style="text-align:center;">
-      <!-- Main Logo Image -->
+      <!-- Full Badge Logo (With Text) + Floating Animation -->
       <img src="bowzer-logo.png" alt="Bowzer Machine Movers" class="hero-main-img">
     </div>
   </div>
 </section>
 
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-num">25+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">BBBEE Level</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Safety Record</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">KZN</div>
+      <div class="stat-label">Local Specialists</div>
+    </div>
+  </div>
+</div>
+
 <!-- SERVICES -->
 <section class="section" id="services" style="background:#070F20;">
   <div class="section-inner">
-    <h2 class="section-title">Our Services</h2>
+    <h2 class="section-title">Specialist Services</h2>
     <div class="services-grid">
       <div class="service-card">
-        <div class="service-title">Rigging Services</div>
-        <p style="color:var(--gray);font-size:14px;line-height:1.6;">Heavy lifting operations, shutdown support, and machinery installation with certified riggers.</p>
+        <div class="service-title">Heavy Rigging</div>
+        <p style="color:var(--gray);font-size:14px;line-height:1.6;">Technical slinging, lifting, and shutdown support for major industrial projects with fully certified riggers.</p>
       </div>
       <div class="service-card">
-        <div class="service-title">Industrial Relocation</div>
-        <p style="color:var(--gray);font-size:14px;line-height:1.6;">Precision factory moves and equipment positioning across KwaZulu-Natal.</p>
+        <div class="service-title">Machine Moving</div>
+        <p style="color:var(--gray);font-size:14px;line-height:1.6;">Precision factory relocation and sensitive equipment positioning across KwaZulu-Natal.</p>
       </div>
       <div class="service-card">
-        <div class="service-title">Technical Support</div>
-        <p style="color:var(--gray);font-size:14px;line-height:1.6;">Safety-first approach to industrial rigging with full OHSA compliance.</p>
+        <div class="service-title">Industrial Support</div>
+        <p style="color:var(--gray);font-size:14px;line-height:1.6;">Mobile crane support, forklift operations, and machinery installation with a focus on durability and safety.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HSE / SAFETY -->
+<section class="section" id="hse">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div>
+        <h2 class="section-title" style="margin-bottom:20px;">Safety First</h2>
+        <p style="color:var(--gray);line-height:1.8;margin-bottom:30px;">Safety is integrated into every aspect of our operations. We maintain full compliance with the Occupational Health & Safety Act (OHSA) and ensure every lift is calculated for zero incidents.</p>
+        <ul style="list-style:none; color:var(--accent); font-weight:700; font-size:14px; line-height:2.5;">
+          <li>✔ FULL OHSA COMPLIANCE</li>
+          <li>✔ RISK ASSESSMENTS PER PROJECT</li>
+          <li>✔ CERTIFIED RIGGING TEAMS</li>
+          <li>✔ REGULAR EQUIPMENT INSPECTION</li>
+        </ul>
+      </div>
+      <div style="background:rgba(33,150,243,0.05); padding:40px; border-radius:4px; border:1px solid rgba(33,150,243,0.1);">
+        <h3 style="font-family:'Barlow Condensed'; font-size:28px; color:var(--white); margin-bottom:15px;">Incident Prevention</h3>
+        <p style="color:var(--gray); font-size:14px; line-height:1.6;">We conduct daily toolbox talks and comprehensive site inductions before any heavy lift takes place.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section class="section" id="contact">
+<section class="section" id="contact" style="background:#050E1F;">
   <div class="section-inner">
     <h2 class="section-title">Get In Touch</h2>
     <div class="contact-grid">
       <div>
         <div class="contact-item">
-          <div style="font-size:11px;color:var(--accent);text-transform:uppercase;margin-bottom:5px;">Location</div>
-          <div style="font-weight:500;">791 Bluff Road, Bluff, KZN</div>
+          <div style="font-size:11px;color:var(--accent);text-transform:uppercase;margin-bottom:5px;letter-spacing:1px;">Head Office</div>
+          <div style="font-weight:500; font-size:18px;">791 Bluff Road, Bluff, KZN</div>
         </div>
         <div class="contact-item">
-          <div style="font-size:11px;color:var(--accent);text-transform:uppercase;margin-bottom:5px;">Email</div>
-          <div style="font-weight:500;">machine.moving@bowzer.co.za</div>
+          <div style="font-size:11px;color:var(--accent);text-transform:uppercase;margin-bottom:5px;letter-spacing:1px;">Enquiries</div>
+          <div style="font-weight:500; font-size:18px;">machine.moving@bowzer.co.za</div>
         </div>
         <div class="contact-item">
-          <div style="font-size:11px;color:var(--accent);text-transform:uppercase;margin-bottom:5px;">Phone</div>
-          <div style="font-weight:500;">D. Hewitt: 073 942 5299</div>
-          <div style="font-size:13px;color:var(--gray);">Lead Rigger: 078 324 6125</div>
+          <div style="font-size:11px;color:var(--accent);text-transform:uppercase;margin-bottom:5px;letter-spacing:1px;">Key Technical Contacts</div>
+          <div style="font-weight:500; font-size:16px;">Admin (D. Hewitt): 073 942 5299</div>
+          <div style="font-size:14px;color:var(--gray);margin-top:5px;">Office Mgr (B. Strydom): 076 407 6292</div>
+          <div style="font-size:14px;color:var(--gray);margin-top:5px;">Lead Rigger (M. Miya): 078 324 6125</div>
         </div>
       </div>
-      <div style="background:#050E1F;padding:48px;border-radius:3px;border:1px solid rgba(33,150,243,0.2);">
+      <div style="background:var(--navy2);padding:48px;border-radius:3px;border:1px solid rgba(33,150,243,0.2);">
         <h3 style="font-family:'Barlow Condensed';font-size:32px;margin-bottom:20px;">Ready to lift?</h3>
-        <p style="color:var(--gray);line-height:1.7;margin-bottom:24px;">Contact us for technical rigging assessments and competitive industrial quotes.</p>
-        <a href="mailto:machine.moving@bowzer.co.za" class="nav-cta" style="display:block;text-align:center;">Email the Office</a>
+        <p style="color:var(--gray);line-height:1.7;margin-bottom:24px;">Contact us for technical rigging assessments and competitive industrial quotes across South Africa.</p>
+        <a href="mailto:machine.moving@bowzer.co.za" class="nav-cta" style="display:block;text-align:center;padding:15px;">Send Email Enquiry</a>
       </div>
     </div>
   </div>
@@ -209,12 +287,12 @@
 <footer>
   <div class="footer-inner">
     <div>
-      <div style="font-family:'Barlow Condensed';font-weight:900;font-size:22px;letter-spacing:2px;">BOWZER <span>MMC</span></div>
-      <p style="font-size:11px;color:var(--gray);">Reg: 1999/035030/23 · VAT: 4200189027</p>
+      <div style="font-family:'Barlow Condensed';font-weight:900;font-size:22px;letter-spacing:2px;text-transform:uppercase;">Bowzer <span>Machine Movers CC</span></div>
+      <p style="font-size:11px;color:var(--gray);margin-top:5px;">Reg: 1999/035030/23 · VAT: 4200189027 · BBBEE Level 4</p>
     </div>
     <div style="text-align:right;font-size:12px;color:var(--gray);">
-      791 Bluff Road, KZN<br/>
-      © 2025 Bowzer Machine Movers CC.
+      791 Bluff Road, Bluff, KZN<br/>
+      © 2025 Bowzer Machinery Rigging Specialists.
     </div>
   </div>
 </footer>
