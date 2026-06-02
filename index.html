@@ -8,218 +8,213 @@
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
   :root{
-    --navy:#050E1F;
-    --navy2:#0A1C3E;
+    --navy:#0A1C3E;
+    --navy2:#0F2D5E;
     --blue:#1565C0;
     --accent:#2196F3;
     --white:#ffffff;
     --gray:#90A4AE;
   }
   html{scroll-behavior:smooth;}
-  body{font-family:'Barlow',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;}
+  body{font-family:'Barlow',sans-serif;background:#0A1C3E;color:var(--white);overflow-x:hidden;}
 
   /* ── NAV ── */
   nav{
     position:fixed;top:0;left:0;right:0;z-index:100;
-    background:rgba(5,14,31,0.96);
+    background:rgba(10,28,62,0.96);
     backdrop-filter:blur(10px);
     border-bottom:2px solid var(--accent);
     display:flex;align-items:center;justify-content:space-between;
-    padding:0 48px;height:90px;
+    padding:0 48px;height:80px;
   }
-  .nav-logo-container { display: flex; align-items: center; gap: 15px; height: 100%; }
-  
-  /* Sizing for the SVG in Nav */
-  .logo-svg-main { height: 70px; width: auto; display: block; }
-
-  .nav-brand{
-    font-family:'Barlow Condensed',sans-serif;
-    font-weight:900;font-size:24px;
-    color:var(--white);letter-spacing:1px;
-    line-height: 1.1;
+  .nav-logo-img {
+    height: 55px; /* Adjust this to make nav logo bigger/smaller */
+    width: auto;
   }
-  .nav-brand span{color:var(--accent); display: block; font-size: 13px; letter-spacing: 2px; text-transform: uppercase;}
-  
-  .nav-links{display:flex;gap:30px;list-style:none;}
+  .nav-links{display:flex;gap:36px;list-style:none;}
   .nav-links a{
-    font-size:12px;font-weight:600;letter-spacing:2px;
+    font-size:13px;font-weight:600;letter-spacing:2px;
     color:var(--gray);text-decoration:none;text-transform:uppercase;
     transition:color 0.2s;
   }
   .nav-links a:hover{color:var(--accent);}
-  
   .nav-cta{
     background:var(--accent);color:var(--white);
-    padding:10px 20px;border-radius:2px;
-    font-size:12px;font-weight:700;letter-spacing:1px;
+    padding:10px 24px;border-radius:3px;
+    font-size:13px;font-weight:700;letter-spacing:1.5px;
     text-transform:uppercase;text-decoration:none;
   }
 
   /* ── HERO ── */
   .hero{
     min-height:100vh;
-    background:radial-gradient(circle at 70% 30%, #0D2348 0%, var(--navy) 70%);
+    background:linear-gradient(135deg,#050E1F 0%,#0A1C3E 45%,#0D2348 100%);
     display:flex;align-items:center;
-    padding:140px 48px 60px;
+    padding:120px 48px 80px;
+    position:relative;
   }
   .hero-grid{
     display:grid;grid-template-columns:1fr 1fr;
-    gap:60px;align-items:center;max-width:1200px;margin:0 auto;width:100%;
+    gap:80px;align-items:center;max-width:1200px;margin:0 auto;width:100%;
   }
   .hero-title{
     font-family:'Barlow Condensed',sans-serif;
-    font-weight:900;font-size:clamp(45px, 6vw, 85px);
-    line-height:0.9;letter-spacing:1px;
-    margin-bottom:20px;
+    font-weight:900;font-size:clamp(56px,6vw,86px);
+    line-height:0.95;letter-spacing:1px;
+    color:var(--white);margin-bottom:12px;
   }
   .hero-title span{color:var(--accent);}
-  .hero-desc{font-size:17px;line-height:1.7;color:var(--gray);margin-bottom:35px;max-width:500px;}
-  
-  /* Large logo in Hero */
-  .hero-logo-large {
+  .hero-desc{
+    font-size:16px;line-height:1.8;color:#90A4AE;
+    margin-bottom:40px;max-width:480px;
+  }
+
+  /* Main Hero Logo Image */
+  .hero-main-img {
     width: 100%;
     max-width: 450px;
     height: auto;
-    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
-    animation: float 6s ease-in-out infinite;
+    filter: drop-shadow(0 20px 50px rgba(0,0,0,0.5));
   }
-  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
   /* ── SECTIONS ── */
-  .section{padding:80px 48px;}
+  .section{padding:100px 48px;}
   .section-inner{max-width:1200px;margin:0 auto;}
-  .section-title{font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:48px; margin-bottom:40px; text-transform:uppercase;}
-  
-  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-  .service-card{background:var(--navy2);padding:40px; border-top:4px solid var(--accent);}
-  .service-card h3{font-family:'Barlow Condensed',sans-serif; font-size:24px; color:var(--accent); margin-bottom:15px; text-transform:uppercase;}
-  .service-card p{color:var(--gray); font-size:14px; line-height:1.6;}
+  .section-title{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:900;font-size:52px;
+    color:var(--white);margin-bottom:48px;
+  }
+
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+  .service-card{
+    background:#0D2348;padding:40px 32px;
+    border-top:3px solid var(--accent);
+  }
+  .service-title{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700;font-size:22px;
+    color:var(--white);margin-bottom:16px;
+  }
 
   /* ── CONTACT ── */
-  .contact-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:60px;}
-  .contact-item{background:var(--navy2); padding:25px; border-left:4px solid var(--accent); margin-bottom:15px;}
-  .contact-label{color:var(--accent); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:5px;}
-  .contact-val{font-size:16px; font-weight:500;}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;}
+  .contact-item{
+    padding:24px;background:#0A1C3E;
+    border-left:3px solid var(--accent);
+    margin-bottom:15px;
+  }
 
-  footer{background:#020810; padding:50px 48px; border-top:2px solid var(--accent);}
-  .footer-inner{max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center;}
+  footer{
+    background:#020810;
+    border-top:2px solid var(--accent);
+    padding:40px 48px;
+  }
+  .footer-inner{
+    max-width:1200px;margin:0 auto;
+    display:flex;justify-content:space-between;align-items:center;
+  }
 
   @media(max-width:900px){
     .hero-grid,.services-grid,.contact-grid{grid-template-columns:1fr;}
     .nav-links{display:none;}
-    nav{padding:0 20px;}
-    .hero{padding:120px 20px 60px;}
-    .hero-logo-large { max-width: 300px; margin-top: 40px; }
+    .hero-main-img { max-width: 300px; margin-top: 40px; }
   }
 </style>
 </head>
 <body>
 
-<!-- SVG DEFINITION (The "Full" Logo with Chains) -->
-<svg style="display:none;">
-  <symbol id="full-bowzer-logo" viewBox="0 0 566 631">
-    <rect x="20.4258" y="461" width="520" height="157" stroke="black" stroke-width="26"/>
-    <rect x="20.4258" y="461" width="520" height="157" stroke="#1976D2" stroke-width="26"/>
-    <!-- The Chain/Lifting Mechanism -->
-    <path d="M195.426 116V0H220.926V116H249.926V0H275.426V127L308.426 170.5L260.926 276L244.426 291.5C244.426 291.5 215.672 324.974 229.926 337C234.61 340.952 244.426 343 244.426 343L262.426 337C262.426 337 279.426 285 293.426 294C295.488 311 302.932 332.802 296.926 345C292.664 353.655 279.926 373 273.426 377C266.926 381 259.926 390.357 235.926 387.5C211.926 384.643 206.547 374.063 202.426 369.5C188.426 354 192.595 338.511 195.426 320C198.428 300.368 220.926 276 220.926 276L166.426 170.5L195.426 116Z" fill="#1565C0"/>
-    <!-- Logo Text -->
-    <path d="M209.984 523.3C209.984 527.06 208.804 529.96 206.444 532C204.084 534 201.084 535 197.444 535H185.324V493.72H195.884C200.044 493 203.304 493.98 205.664 495.94C208.064 497.86 209.264 500.76 209.264 504.64C209.264 508.48 208.004 511.3 205.484 513.1C209.984 523.3 209.984 523.3 209.984 523.3ZM194.564 501.82V509.8H196.004C198.584 509.8 199.484 507.04 199.484 505.72C199.484 504.36 198.584 502.6 196.004 501.52H194.864V501.82ZM194.564 517.24V526.42H196.664C200.024 526.42 200.024 517.24 196.664 517.24H194.564Z" fill="white"/>
-    <path d="M225.438 535.48C221.558 535.48 218.458 534.36 216.138 532.12C213.858 529.88 212.718 526.86 212.718 523.06V504.94C212.718 501.18 213.858 498.18 216.138 495.94C218.458 493.66 221.558 492.52 225.438 492.52C229.278 492.52 232.358 493.66 234.678 495.94C237.038 498.18 238.218 501.18 238.218 504.94V523.06C238.218 526.86 237.038 529.88 234.678 532.12C232.358 534.36 229.278 535.48 225.438 535.48ZM225.438 526.96C226.318 526.96 226.998 526.66 227.478 526.06C227.998 525.42 228.258 524.56 228.258 523.48V504.52C228.258 503.44 227.998 502.6 227.478 502C226.998 501.36 226.318 501.04 225.438 501.04C224.558 501.04 223.878 501.36 223.398 502C222.918 502.6 222.678 503.44 222.678 504.52V523.48C222.678 524.56 222.918 525.42 223.398 526.06C223.878 526.66 224.558 526.96 225.438 526.96Z" fill="white"/>
-    <path d="M249.77 535L240.83 493.78H250.25L253.73 513.4L256.79 493.66H264.59L268.37 513.4L271.13 493.66H280.49L273.41 534.34H264.95L261.17 513.82L258.17 534.34H249.77Z" fill="white"/>
-    <path d="M283.852 535V526.96L295.492 501.88H283.852V500.8H295.252V501.52H283.852V493H305.452V501.04L293.692 526.12H305.452V535H283.852Z" fill="white"/>
-    <path d="M309.409 535V493H331.729V500.8H319.369V509.68H326.989V518.26H319.369V526.48H331.729V535H309.409Z" fill="white"/>
-    <path d="M336.613 535V493H349.513C361.333 506.02 361.333 508.26 356.653 516.34L361.633 534.16H352.273L347.353 518.5H346.153V535H336.613ZM346.153 501.52H347.833C351.373 506.14 351.373 504.66 347.833 501.52H346.153Z" fill="white"/>
-    <!-- Small Text Inside -->
-    <path d="M125.544 586.52V559.48H130.184V586.52H125.544Z" fill="#D9D9D9"/>
-    <path d="M143.538 559H148.538L157.778 586.44H153.378L151.538 582.32H140.778L139.258 586.6H134.738L143.018 559.4ZM146.138 564.88L141.818 578.28H150.258L146.138 564.88Z" fill="#D9D9D9"/>
-    <path d="M170.612 587.32C160.572 587.32 160.572 568.04 170.612 558.68C180.612 567.68 180.612 578.24 170.612 587.32ZM170.612 583.32C175.972 583.32 175.972 562.68 170.612 562.68C165.212 562.68 165.212 583.32 170.612 583.32Z" fill="#D9D9D9"/>
-    <path d="M205.468 559.48V586.52H200.828V574.88H190.428V586.52H185.588V559.48H190.228V570.68H200.628V559.48H205.468Z" fill="#D9D9D9"/>
-    <path d="M215.697 559.48V586.52H211.057V559.48H215.697Z" fill="#D9D9D9"/>
-    <path d="M242.445 559.48V586.52H238.405L226.325 567.8V586.52H221.525V559.48H225.565L237.605 578.2V559.48H242.445Z" fill="#D9D9D9"/>
-    <path d="M266.892 563H252.772V570.88H261.932V574.88H252.772V583H266.412V587H247.932V559H266.412V563Z" fill="#D9D9D9"/>
-  </symbol>
-</svg>
-
-<!-- NAVIGATION -->
+<!-- NAV -->
 <nav>
-  <div class="nav-logo-container">
-    <svg class="logo-svg-main"><use xlink:href="#full-bowzer-logo"/></svg>
-    <div class="nav-brand">BOWZER <span>MACHINE MOVERS</span></div>
+  <div class="nav-logo">
+    <img src="bowzer-logo.png" alt="Bowzer Logo" class="nav-logo-img">
   </div>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
-    <li><a href="#safety">Safety</a></li>
+    <li><a href="#hse">Safety</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Enquire Now</a>
+  <a href="#contact" class="nav-cta">Get a Quote</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-grid">
     <div>
-      <h1 class="hero-title">PRECISION<br/><span>INDUSTRIAL</span><br/>RIGGING</h1>
-      <p class="hero-desc">Specialist machinery relocation and heavy lifting services. Over 25 years of experience moving South Africa's industry.</p>
-      <a href="#contact" class="nav-cta" style="padding:15px 30px;">Get a Technical Quote</a>
+      <div style="font-size:12px;font-weight:700;letter-spacing:4px;color:var(--accent);margin-bottom:20px;">RIGGING SPECIALISTS</div>
+      <h1 class="hero-title">BOWZER<br/><span>MACHINE</span><br/>MOVERS</h1>
+      <p class="hero-desc">Professional rigging, heavy lifting and industrial machinery moving services. Trusted by South Africa's major industrial brands for over 25 years.</p>
+      <div style="display:flex;gap:16px;">
+        <a href="#contact" class="nav-cta" style="padding:16px 36px;">Request a Quote</a>
+      </div>
     </div>
-    <div style="text-align: center;">
-      <!-- Large Version in Hero -->
-      <svg class="hero-logo-large"><use xlink:href="#full-bowzer-logo"/></svg>
+    <div style="text-align:center;">
+      <!-- Main Logo Image -->
+      <img src="bowzer-logo.png" alt="Bowzer Machine Movers" class="hero-main-img">
     </div>
   </div>
 </section>
 
 <!-- SERVICES -->
-<section class="section" id="services">
+<section class="section" id="services" style="background:#070F20;">
   <div class="section-inner">
-    <h2 class="section-title">Specialist Services</h2>
+    <h2 class="section-title">Our Services</h2>
     <div class="services-grid">
-      <div class="service-card"><h3>Heavy Rigging</h3><p>Technical slinging, lifting, and shutdown support for major industrial projects.</p></div>
-      <div class="service-card"><h3>Machine Moving</h3><p>Precision factory relocation and sensitive equipment positioning.</p></div>
-      <div class="service-card"><h3>Industrial Support</h3><p>Safe transport and loading/unloading of heavy industrial machinery.</p></div>
+      <div class="service-card">
+        <div class="service-title">Rigging Services</div>
+        <p style="color:var(--gray);font-size:14px;line-height:1.6;">Heavy lifting operations, shutdown support, and machinery installation with certified riggers.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-title">Industrial Relocation</div>
+        <p style="color:var(--gray);font-size:14px;line-height:1.6;">Precision factory moves and equipment positioning across KwaZulu-Natal.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-title">Technical Support</div>
+        <p style="color:var(--gray);font-size:14px;line-height:1.6;">Safety-first approach to industrial rigging with full OHSA compliance.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section class="section" id="contact" style="background:#020810;">
+<section class="section" id="contact">
   <div class="section-inner">
-    <h2 class="section-title">Contact Our Team</h2>
+    <h2 class="section-title">Get In Touch</h2>
     <div class="contact-grid">
-      <div class="contact-info">
+      <div>
         <div class="contact-item">
-          <div class="contact-label">KZN Head Office</div>
-          <div class="contact-val">791 Bluff Road, Bluff, KZN</div>
+          <div style="font-size:11px;color:var(--accent);text-transform:uppercase;margin-bottom:5px;">Location</div>
+          <div style="font-weight:500;">791 Bluff Road, Bluff, KZN</div>
         </div>
         <div class="contact-item">
-          <div class="contact-label">Direct Enquiries</div>
-          <div class="contact-val">machine.moving@bowzer.co.za</div>
+          <div style="font-size:11px;color:var(--accent);text-transform:uppercase;margin-bottom:5px;">Email</div>
+          <div style="font-weight:500;">machine.moving@bowzer.co.za</div>
         </div>
         <div class="contact-item">
-          <div class="contact-label">Technical Contacts</div>
-          <div class="contact-val">Admin (D. Hewitt): 073 942 5299</div>
-          <div class="contact-sub">Office Mgr (B. Strydom): 076 407 6292</div>
-          <div class="contact-sub">Lead Rigger (M. Miya): 078 324 6125</div>
+          <div style="font-size:11px;color:var(--accent);text-transform:uppercase;margin-bottom:5px;">Phone</div>
+          <div style="font-weight:500;">D. Hewitt: 073 942 5299</div>
+          <div style="font-size:13px;color:var(--gray);">Lead Rigger: 078 324 6125</div>
         </div>
       </div>
-      <div style="background:var(--navy2); padding:40px; border-radius:2px;">
-        <h3 style="margin-bottom:20px; font-family:'Barlow Condensed'; font-size:28px;">Request a Site Visit</h3>
-        <p style="color:var(--gray); font-size:15px; line-height:1.6; margin-bottom:20px;">Our lead riggers provide technical assessments for heavy lifts and factory relocations across KwaZulu-Natal.</p>
-        <a href="mailto:machine.moving@bowzer.co.za" class="nav-cta" style="display:block; text-align:center;">Email the Office</a>
+      <div style="background:#050E1F;padding:48px;border-radius:3px;border:1px solid rgba(33,150,243,0.2);">
+        <h3 style="font-family:'Barlow Condensed';font-size:32px;margin-bottom:20px;">Ready to lift?</h3>
+        <p style="color:var(--gray);line-height:1.7;margin-bottom:24px;">Contact us for technical rigging assessments and competitive industrial quotes.</p>
+        <a href="mailto:machine.moving@bowzer.co.za" class="nav-cta" style="display:block;text-align:center;">Email the Office</a>
       </div>
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div>
-      <div class="footer-brand">BOWZER <span>MACHINE MOVERS CC</span></div>
-      <p style="font-size:11px; color:var(--gray); margin-top:5px;">Reg: 1999/035030/23 · VAT: 4200189027</p>
+      <div style="font-family:'Barlow Condensed';font-weight:900;font-size:22px;letter-spacing:2px;">BOWZER <span>MMC</span></div>
+      <p style="font-size:11px;color:var(--gray);">Reg: 1999/035030/23 · VAT: 4200189027</p>
     </div>
-    <div style="text-align:right; font-size:12px; color:var(--gray);">
-      © 2025 Bowzer Rigging Specialists<br/>
-      Bluff, South Africa
+    <div style="text-align:right;font-size:12px;color:var(--gray);">
+      791 Bluff Road, KZN<br/>
+      © 2025 Bowzer Machine Movers CC.
     </div>
   </div>
 </footer>
