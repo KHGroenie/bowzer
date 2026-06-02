@@ -29,16 +29,24 @@
     backdrop-filter:blur(10px);
     border-bottom:2px solid var(--accent);
     display:flex;align-items:center;justify-content:space-between;
-    padding:0 48px;height:72px;
+    padding:0 48px;height:80px; /* Slightly taller for the new logo */
   }
-  .nav-logo{display:flex;align-items:center;gap:16px;}
-  .nav-logo-hook{width:32px;height:36px;}
+  .nav-logo{display:flex;align-items:center;gap:12px; height: 100%;}
+  
+  /* NEW LOGO STYLING */
+  .main-logo-svg {
+    height: 65px; /* Fits comfortably in the 80px nav */
+    width: auto;
+  }
+
   .nav-brand{
     font-family:'Barlow Condensed',sans-serif;
-    font-weight:900;font-size:26px;
-    color:var(--white);letter-spacing:2px;
+    font-weight:900;font-size:24px;
+    color:var(--white);letter-spacing:1px;
+    line-height: 1;
   }
-  .nav-brand span{color:var(--accent);}
+  .nav-brand span{color:var(--accent); display: block; font-size: 14px; letter-spacing: 3px;}
+  
   .nav-links{display:flex;gap:36px;list-style:none;}
   .nav-links a{
     font-size:13px;font-weight:600;letter-spacing:2px;
@@ -63,292 +71,97 @@
     padding:120px 48px 80px;
     position:relative;overflow:hidden;
   }
-  .hero::before{
-    content:'';position:absolute;inset:0;
-    background:repeating-linear-gradient(
-      -55deg,
-      transparent,transparent 60px,
-      rgba(33,150,243,0.03) 60px,rgba(33,150,243,0.03) 61px
-    );
-  }
   .hero-grid{
     display:grid;grid-template-columns:1fr 1fr;
     gap:80px;align-items:center;max-width:1200px;margin:0 auto;width:100%;
     position:relative;z-index:1;
   }
-  .hero-eyebrow{
-    font-size:12px;font-weight:700;letter-spacing:4px;
-    color:var(--accent);text-transform:uppercase;margin-bottom:20px;
-  }
   .hero-title{
     font-family:'Barlow Condensed',sans-serif;
-    font-weight:900;font-size:clamp(56px,6vw,86px);
+    font-weight:900;font-size:clamp(50px,6vw,80px);
     line-height:0.95;letter-spacing:1px;
     color:var(--white);margin-bottom:12px;
   }
   .hero-title span{color:var(--accent);}
-  .hero-subtitle{
-    font-family:'Barlow Condensed',sans-serif;
-    font-weight:600;font-size:22px;
-    color:var(--accent2);letter-spacing:3px;
-    text-transform:uppercase;margin-bottom:24px;
-  }
-  .hero-accent-line{
-    width:80px;height:4px;
-    background:linear-gradient(90deg,var(--accent),var(--accent2));
-    border-radius:2px;margin-bottom:28px;
-  }
   .hero-desc{
     font-size:16px;line-height:1.8;color:#90A4AE;
     margin-bottom:40px;max-width:480px;
   }
-  .hero-buttons{display:flex;gap:16px;flex-wrap:wrap;}
-  .btn-primary{
-    background:linear-gradient(90deg,var(--blue),var(--accent));
-    color:var(--white);padding:16px 36px;border-radius:3px;
-    font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-    text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;
-    box-shadow:0 4px 20px rgba(33,150,243,0.3);
-  }
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(33,150,243,0.4);}
-  .btn-ghost{
-    border:2px solid rgba(33,150,243,0.5);color:var(--accent);
-    padding:14px 36px;border-radius:3px;
-    font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-    text-decoration:none;transition:all 0.2s;
-  }
-  .btn-ghost:hover{border-color:var(--accent);background:rgba(33,150,243,0.08);}
-
-  /* Hero visual */
-  .hero-visual{display:flex;justify-content:center;align-items:center;}
-  .hook-diagram{position:relative;width:320px;height:380px;}
-  .hook-svg{width:100%;height:100%;}
-  .hero-badges{
-    display:flex;flex-direction:column;gap:12px;
-    position:absolute;right:-20px;top:50%;transform:translateY(-50%);
-  }
-  .badge{
-    background:rgba(10,28,62,0.9);
-    border:1px solid rgba(33,150,243,0.3);
-    border-left:3px solid var(--accent);
-    padding:10px 16px;border-radius:2px;
-    font-size:12px;font-weight:700;letter-spacing:1px;
-    color:var(--white);text-transform:uppercase;white-space:nowrap;
+  
+  /* Hero visual logo */
+  .hero-visual-logo {
+    width: 100%;
+    max-width: 450px;
+    filter: drop-shadow(0 20px 50px rgba(0,0,0,0.5));
+    animation: float 6s ease-in-out infinite;
   }
 
-  /* Stats strip */
-  .stats-strip{
-    background:#050E1F;
-    border-top:2px solid rgba(33,150,243,0.2);
-    border-bottom:2px solid rgba(33,150,243,0.2);
-    padding:32px 48px;
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
   }
+
+  /* ── STATS ── */
+  .stats-strip{background:#050E1F; border-top:2px solid rgba(33,150,243,0.2); padding:32px 48px;}
   .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1000px;margin:0 auto;}
-  .stat-item{text-align:center;}
-  .stat-num{
-    font-family:'Barlow Condensed',sans-serif;
-    font-weight:900;font-size:48px;
-    color:var(--accent);line-height:1;
-  }
-  .stat-label{font-size:12px;letter-spacing:2px;color:var(--gray);text-transform:uppercase;margin-top:6px;}
+  .stat-num{font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:48px; color:var(--accent); line-height:1;}
+  .stat-label{font-size:12px; letter-spacing:2px; color:var(--gray); text-transform:uppercase;}
 
   /* ── SERVICES ── */
   .section{padding:100px 48px;}
-  .section-inner{max-width:1200px;margin:0 auto;}
-  .section-eyebrow{
-    font-size:12px;font-weight:700;letter-spacing:4px;
-    color:var(--accent);text-transform:uppercase;margin-bottom:12px;
-  }
-  .section-title{
-    font-family:'Barlow Condensed',sans-serif;
-    font-weight:900;font-size:52px;
-    color:var(--white);margin-bottom:8px;
-  }
-  .section-line{
-    width:60px;height:4px;
-    background:linear-gradient(90deg,var(--accent),transparent);
-    margin-bottom:48px;
-  }
-
   .services-bg{background:#070F20;}
-  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:0;}
-  .service-card{
-    background:#0A1C3E;padding:40px 32px;
-    border-top:3px solid transparent;
-    transition:border-color 0.25s,background 0.25s,transform 0.2s;
-    cursor:default;
-  }
-  .service-card:hover{
-    border-top-color:var(--accent);
-    background:#0D2348;
-    transform:translateY(-4px);
-  }
-  .service-icon{
-    width:52px;height:52px;margin-bottom:24px;
-  }
-  .service-title{
-    font-family:'Barlow Condensed',sans-serif;
-    font-weight:700;font-size:22px;
-    color:var(--white);margin-bottom:16px;letter-spacing:1px;
-  }
-  .service-items{list-style:none;display:flex;flex-direction:column;gap:8px;}
-  .service-items li{
-    font-size:14px;color:var(--gray);line-height:1.5;
-    padding-left:16px;position:relative;
-  }
-  .service-items li::before{
-    content:'▸';color:var(--accent);
-    position:absolute;left:0;font-size:11px;top:2px;
-  }
-
-  /* ── CLIENTS ── */
-  .clients-section{
-    background:linear-gradient(180deg,#070F20,#0A1C3E);
-  }
-  .clients-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-  .client-card{
-    background:#0D2348;
-    border:1px solid rgba(33,150,243,0.15);
-    border-top:3px solid var(--accent);
-    padding:36px 28px;border-radius:2px;
-  }
-  .client-name{
-    font-family:'Barlow Condensed',sans-serif;
-    font-weight:700;font-size:18px;
-    color:var(--white);margin-bottom:6px;
-  }
-  .client-div{font-size:13px;color:var(--accent2);margin-bottom:12px;font-weight:500;}
-  .client-loc{font-size:13px;color:var(--gray);}
-  .client-loc::before{content:'📍 ';}
-
-  /* ── HSE SECTION ── */
-  .hse-section{background:#050E1F;}
-  .hse-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-  .hse-list{display:flex;flex-direction:column;gap:16px;}
-  .hse-item{
-    display:flex;align-items:flex-start;gap:16px;
-    padding:20px 24px;
-    background:rgba(10,28,62,0.6);
-    border-left:3px solid var(--accent);
-    border-radius:0 2px 2px 0;
-  }
-  .hse-check{
-    color:var(--accent);font-size:18px;
-    flex-shrink:0;margin-top:1px;
-  }
-  .hse-text{font-size:14px;line-height:1.6;color:#B0BEC5;}
-  .hse-big-text{
-    font-family:'Barlow Condensed',sans-serif;
-    font-weight:900;font-size:72px;line-height:0.9;
-    color:rgba(33,150,243,0.08);
-    position:absolute;
-  }
-  .hse-right{position:relative;}
-  .hse-numbers{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px;}
-  .hse-num-card{
-    background:#0A1C3E;border:1px solid rgba(33,150,243,0.2);
-    padding:28px 24px;border-radius:2px;text-align:center;
-  }
-  .hse-big-num{
-    font-family:'Barlow Condensed',sans-serif;
-    font-weight:900;font-size:42px;color:var(--accent);
-  }
-  .hse-num-label{font-size:11px;letter-spacing:2px;color:var(--gray);text-transform:uppercase;margin-top:4px;}
-
-  /* ── VALUES ── */
-  .values-section{background:linear-gradient(135deg,#0A1C3E,#070F20);}
-  .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-  .value-card{
-    padding:36px 28px;
-    border:1px solid rgba(33,150,243,0.1);
-    border-bottom:3px solid var(--accent);
-    background:rgba(13,36,72,0.5);
-    transition:background 0.2s;
-  }
-  .value-card:hover{background:rgba(13,36,72,0.9);}
-  .value-title{
-    font-family:'Barlow Condensed',sans-serif;
-    font-weight:700;font-size:22px;
-    color:var(--accent);margin-bottom:12px;letter-spacing:1px;
-    text-transform:uppercase;
-  }
-  .value-desc{font-size:14px;line-height:1.7;color:#90A4AE;}
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .service-card{background:#0A1C3E;padding:40px 32px; border-top:3px solid var(--accent);}
+  .service-title{font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:22px; margin-bottom:16px;}
 
   /* ── CONTACT ── */
   .contact-section{background:#050E1F;}
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;}
-  .contact-info{display:flex;flex-direction:column;gap:24px;}
-  .contact-item{
-    display:flex;align-items:flex-start;gap:20px;
-    padding:24px;background:#0A1C3E;
-    border-left:3px solid var(--accent);
-  }
-  .contact-icon{font-size:22px;flex-shrink:0;}
-  .contact-label{font-size:11px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:4px;}
-  .contact-value{font-size:15px;color:var(--white);font-weight:500;}
-  .contact-value-sm{font-size:13px;color:#90A4AE;margin-top:2px;}
 
-  .contact-cta{
-    background:linear-gradient(135deg,#0D2348,#0A1C3E);
-    border:1px solid rgba(33,150,243,0.2);
-    padding:48px;border-radius:3px;
-    display:flex;flex-direction:column;justify-content:center;gap:24px;
-  }
-  .contact-cta-title{
-    font-family:'Barlow Condensed',sans-serif;
-    font-weight:900;font-size:38px;color:var(--white);
-  }
-  .contact-cta-text{font-size:15px;color:#90A4AE;line-height:1.7;}
-
-  /* ── FOOTER ── */
-  footer{
-    background:#020810;
-    border-top:2px solid rgba(33,150,243,0.3);
-    padding:40px 48px;
-  }
-  .footer-inner{
-    max-width:1200px;margin:0 auto;
-    display:flex;justify-content:space-between;align-items:center;
-  }
-  .footer-brand{
-    font-family:'Barlow Condensed',sans-serif;
-    font-weight:900;font-size:22px;color:var(--white);letter-spacing:2px;
-  }
-  .footer-brand span{color:var(--accent);}
-  .footer-reg{font-size:12px;color:#37474F;margin-top:4px;}
-  .footer-right{text-align:right;font-size:12px;color:#546E7A;line-height:1.9;}
+  footer{background:#020810; padding:40px 48px; border-top:2px solid var(--accent);}
+  .footer-inner{max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center;}
 
   @media(max-width:900px){
-    .hero-grid,.hse-grid,.contact-grid{grid-template-columns:1fr;}
-    .services-grid,.clients-grid,.values-grid{grid-template-columns:1fr;}
-    nav{padding:0 24px;}
+    .hero-grid,.services-grid,.contact-grid{grid-template-columns:1fr;}
     .nav-links{display:none;}
-    .section{padding:60px 24px;}
   }
 </style>
 </head>
 <body>
 
+<!-- SVG DEFINITION (The "Badge" Logo) -->
+<svg style="display: none;">
+  <symbol id="bowzer-badge" viewBox="0 0 566 631">
+    <rect x="20" y="461" width="520" height="157" stroke="#1976D2" stroke-width="26" fill="rgba(10,28,62,0.8)"/>
+    <path d="M195.426 116V0H220.926V116H249.926V0H275.426V127L308.426 170.5L260.926 276L244.426 291.5C244.426 291.5 215.672 324.974 229.926 337C234.61 340.952 244.426 343 244.426 343L262.426 337C262.426 337 279.426 285 293.426 294C295.488 311 302.932 332.802 296.926 345C292.664 353.655 279.926 373 273.426 377C266.926 381 259.926 390.357 235.926 387.5C211.926 384.643 206.547 374.063 202.426 369.5C188.426 354 192.595 338.511 195.426 320C198.428 300.368 220.926 276 220.926 276L166.426 170.5L195.426 116Z" fill="#1976D2"/>
+    <path d="M209.984 523.3C209.984 527.06 208.804 529.96 206.444 532C204.084 534 201.084 535 197.444 535H185.324V493.72H195.884C200.044 493 203.304 493.98 205.664 495.94C208.064 497.86 209.264 500.76 209.264 504.64C209.264 508.48 208.004 511.3 205.484 513.1C208.464 515.7 209.984 518.98 209.984 523.3ZM194.564 501.82V509.8H196.004C198.584 508.78 199.484 507.04 199.484 505.72C199.484 504.36 198.584 502.6 196.004 501.52H194.864ZM194.564 517.24V526.42H196.664C200.024 521.8 199.124 518.26 196.724 516.94H194.864Z" fill="white"/>
+    <path d="M225.438 535.48C221.558 535.48 218.458 534.36 216.138 532.12C212.718 523.06 212.718 504.94 216.138 495.94C218.458 492.52 225.438 492.52 234.678 495.94C238.218 504.94 238.218 523.06 234.678 532.12C232.358 534.36 225.438 535.48 225.438 535.48ZM225.438 526.96C228.258 523.48 228.258 504.52 225.438 501.04C222.678 504.52 222.678 523.48 225.438 526.96Z" fill="white"/>
+    <path d="M249.77 535L240.83 493.78H250.25L253.73 513.4L256.79 493.66H264.59L268.37 513.4L271.13 493.66H280.49L273.41 534.34H264.95L261.17 513.82L258.17 534.34H249.77Z" fill="white"/>
+    <path d="M283.852 535V526.96L295.492 501.88H283.852V493H305.452V501.04L293.692 526.12H305.452V535H283.852Z" fill="white"/>
+    <path d="M309.409 535V493H331.729V501.52H319.369V509.68H326.989V518.26H319.369V526.48H331.729V535H309.409Z" fill="white"/>
+    <path d="M336.613 535V493H349.513C361.333 506.02 361.333 508.26 356.653 516.34L361.633 534.16H352.273L347.353 518.5H346.153V535H336.613ZM345.853 501.52V510.64H347.833C351.373 506.14 351.373 504.66 347.833 501.52H345.853Z" fill="white"/>
+    <path d="M125.544 586.52V559.48H130.184V586.52H125.544ZM120.304 575.04H117.904L112.304 567.4V586.52H107.424V559.48H111.584L118.664 569.2L125.464 559.32H130.184" fill="#D9D9D9"/>
+    <path d="M143.538 559H148.538L157.778 586.44H153.378L151.538 582.32H140.778L139.258 586.6H134.738L143.018 559.4ZM146.138 564.88L141.818 578.28H150.258L146.138 564.88Z" fill="#D9D9D9"/>
+    <path d="M170.612 587.32C160.572 577.92 160.572 568.04 170.612 558.68C180.612 567.68 180.612 578.24 170.612 587.32ZM170.612 583.32C175.972 578.12 175.972 567.92 170.612 562.68C165.212 567.92 165.212 578.12 170.612 583.32Z" fill="#D9D9D9"/>
+    <path d="M205.468 559.48V586.52H200.828V574.88H190.428V586.52H185.588V559.48H190.228V570.68H200.628V559.48H205.468Z" fill="#D9D9D9"/>
+    <path d="M215.697 559.48V586.52H211.057V559.48H215.697Z" fill="#D9D9D9"/>
+    <path d="M242.445 559.48V586.52H238.405L226.325 567.8V586.52H221.525V559.48H225.565L237.605 578.2V559.48H242.445Z" fill="#D9D9D9"/>
+    <path d="M266.892 563H252.572V570.88H261.932V574.88H252.772V583H266.412V587H247.932V559H266.412V563Z" fill="#D9D9D9"/>
+  </symbol>
+</svg>
+
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <svg class="nav-logo-hook" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="4" y="7" width="24" height="4" rx="2" fill="#2196F3"/>
-      <ellipse cx="8" cy="4" rx="4" ry="5" fill="none" stroke="#2196F3" stroke-width="2.5"/>
-      <ellipse cx="24" cy="4" rx="4" ry="5" fill="none" stroke="#2196F3" stroke-width="2.5"/>
-      <line x1="16" y1="11" x2="16" y2="18" stroke="#2196F3" stroke-width="3" stroke-linecap="round"/>
-      <path d="M16,18 C16,18 16,22 16,26 C16,33 26,35 26,28 C26,23 20,22 18,26" fill="none" stroke="#2196F3" stroke-width="3.5" stroke-linecap="round"/>
-      <path d="M18,26 C14,26 11,22 14,19" fill="none" stroke="#2196F3" stroke-width="3.5" stroke-linecap="round"/>
-    </svg>
-    <div>
-      <div class="nav-brand">BOWZER <span>MMC</span></div>
-    </div>
+    <!-- Using the Badge Logo in the Nav -->
+    <svg class="main-logo-svg"><use xlink:href="#bowzer-badge"/></svg>
+    <div class="nav-brand">BOWZER <span>MACHINE MOVERS</span></div>
   </div>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#clients">Clients</a></li>
     <li><a href="#hse">Safety</a></li>
-    <li><a href="#values">Values</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Get a Quote</a>
 </nav>
@@ -357,267 +170,64 @@
 <section class="hero">
   <div class="hero-grid">
     <div>
-      <div class="hero-eyebrow">South Africa's Trusted Rigging Specialists</div>
-      <h1 class="hero-title">BOWZER<br/><span>MACHINE</span><br/>MOVERS</h1>
-      <div class="hero-subtitle">CC — Bluff, KZN</div>
-      <div class="hero-accent-line"></div>
-      <p class="hero-desc">Professional rigging, heavy lifting and industrial machinery moving services. Founded on a legacy of precision, safety and excellence — trusted by South Africa's major industrial brands.</p>
+      <div class="hero-eyebrow">Rigging & Lifting Specialists</div>
+      <h1 class="hero-title">ENGINEERED<br/>TO <span>MOVE</span></h1>
+      <p class="hero-desc">Heavy industrial rigging and precision machinery relocation. Trusted by South Africa's largest manufacturers to move the impossible safely.</p>
       <div class="hero-buttons">
         <a href="#contact" class="btn-primary">Request a Quote</a>
         <a href="#services" class="btn-ghost">Our Services</a>
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hook-diagram">
-        <svg class="hook-svg" viewBox="0 0 320 380" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Glow effect -->
-          <ellipse cx="160" cy="190" rx="120" ry="140" fill="rgba(33,150,243,0.04)"/>
-          <!-- Top beam -->
-          <rect x="60" y="52" width="200" height="12" rx="6" fill="#1565C0"/>
-          <!-- Chain links left -->
-          <ellipse cx="90" cy="30" rx="12" ry="18" fill="none" stroke="#1976D2" stroke-width="7"/>
-          <ellipse cx="90" cy="8" rx="8" ry="12" fill="none" stroke="#1565C0" stroke-width="5"/>
-          <!-- Chain links right -->
-          <ellipse cx="230" cy="30" rx="12" ry="18" fill="none" stroke="#1976D2" stroke-width="7"/>
-          <ellipse cx="230" cy="8" rx="8" ry="12" fill="none" stroke="#1565C0" stroke-width="5"/>
-          <!-- Center drop -->
-          <line x1="160" y1="64" x2="160" y2="100" stroke="#2196F3" stroke-width="8" stroke-linecap="round"/>
-          <!-- Shackle -->
-          <rect x="144" y="96" width="32" height="14" rx="7" fill="#1976D2"/>
-          <!-- Hook body -->
-          <path d="M160,110 L160,185 C160,230 210,248 210,278 C210,310 185,325 162,325 C135,325 110,308 110,278 C110,258 124,244 140,240" 
-                fill="none" stroke="#2196F3" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Hook curl tip -->
-          <path d="M140,240 C118,240 104,220 112,206 C120,193 138,193 146,204" 
-                fill="none" stroke="#2196F3" stroke-width="14" stroke-linecap="round"/>
-          <!-- Safety pin -->
-          <line x1="130" y1="206" x2="145" y2="192" stroke="#1565C0" stroke-width="8" stroke-linecap="round"/>
-          <!-- Load bar bottom -->
-          <rect x="60" y="52" width="200" height="3" rx="1.5" fill="rgba(33,150,243,0.3)"/>
-          <!-- Accent dots on hook -->
-          <circle cx="210" cy="278" r="6" fill="#1565C0" opacity="0.6"/>
-        </svg>
-      </div>
+       <!-- Big badge logo in the Hero -->
+       <svg class="hero-visual-logo"><use xlink:href="#bowzer-badge"/></svg>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
+<!-- REST OF YOUR CONTENT (STATS, SERVICES, ETC) -->
 <div class="stats-strip">
   <div class="stats-grid">
-    <div class="stat-item">
-      <div class="stat-num">25+</div>
-      <div class="stat-label">Years of Experience</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">4</div>
-      <div class="stat-label">BBBEE Level</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">3+</div>
-      <div class="stat-label">Major Industry Clients</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">100%</div>
-      <div class="stat-label">OHSA Compliant</div>
-    </div>
+    <div class="stat-item"><div class="stat-num">25+</div><div class="stat-label">Years Exp</div></div>
+    <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">BBBEE Level</div></div>
+    <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Safety Record</div></div>
+    <div class="stat-item"><div class="stat-num">KZN</div><div class="stat-label">Based Specialists</div></div>
   </div>
 </div>
 
-<!-- SERVICES -->
 <section class="section services-bg" id="services">
   <div class="section-inner">
-    <div class="section-eyebrow">What We Do</div>
-    <h2 class="section-title">Our Services</h2>
-    <div class="section-line"></div>
+    <h2 class="section-title">Specialist Services</h2>
     <div class="services-grid">
-      <div class="service-card">
-        <svg class="service-icon" viewBox="0 0 52 52" fill="none">
-          <rect x="8" y="20" width="36" height="6" rx="3" fill="#1565C0"/>
-          <ellipse cx="16" cy="14" rx="5" ry="7" fill="none" stroke="#2196F3" stroke-width="3.5"/>
-          <ellipse cx="36" cy="14" rx="5" ry="7" fill="none" stroke="#2196F3" stroke-width="3.5"/>
-          <line x1="26" y1="26" x2="26" y2="34" stroke="#2196F3" stroke-width="4" stroke-linecap="round"/>
-          <path d="M26,34 C26,42 36,44 36,38 C36,34 30,33 28,36" fill="none" stroke="#2196F3" stroke-width="4" stroke-linecap="round"/>
-          <path d="M28,36 C22,36 19,30 22,27" fill="none" stroke="#2196F3" stroke-width="4" stroke-linecap="round"/>
-        </svg>
-        <div class="service-title">Rigging Services</div>
-        <ul class="service-items">
-          <li>Heavy lifting operations</li>
-          <li>Crane rigging and signaling</li>
-          <li>Load shifting and positioning</li>
-          <li>Shutdown rigging support</li>
-          <li>Machinery removal and installation</li>
-          <li>Slinging and lifting supervision</li>
-        </ul>
-      </div>
-      <div class="service-card">
-        <svg class="service-icon" viewBox="0 0 52 52" fill="none">
-          <rect x="6" y="30" width="40" height="6" rx="2" fill="#1565C0"/>
-          <rect x="18" y="16" width="16" height="14" rx="2" fill="none" stroke="#2196F3" stroke-width="3"/>
-          <line x1="26" y1="8" x2="26" y2="16" stroke="#2196F3" stroke-width="3" stroke-linecap="round"/>
-          <circle cx="26" cy="6" r="3" fill="#2196F3"/>
-          <circle cx="12" cy="36" r="4" fill="none" stroke="#2196F3" stroke-width="2.5"/>
-          <circle cx="40" cy="36" r="4" fill="none" stroke="#2196F3" stroke-width="2.5"/>
-        </svg>
-        <div class="service-title">Industrial Services</div>
-        <ul class="service-items">
-          <li>Mechanical installations</li>
-          <li>Equipment and factory relocation</li>
-          <li>Conveyor installations</li>
-          <li>High-pressure cleaning</li>
-          <li>Industrial shutdown assistance</li>
-        </ul>
-      </div>
-      <div class="service-card">
-        <svg class="service-icon" viewBox="0 0 52 52" fill="none">
-          <rect x="10" y="10" width="32" height="24" rx="3" fill="none" stroke="#2196F3" stroke-width="3"/>
-          <line x1="26" y1="34" x2="26" y2="44" stroke="#2196F3" stroke-width="3" stroke-linecap="round"/>
-          <line x1="16" y1="44" x2="36" y2="44" stroke="#2196F3" stroke-width="3" stroke-linecap="round"/>
-          <rect x="22" y="20" width="8" height="8" rx="1" fill="#1565C0"/>
-          <line x1="10" y1="22" x2="4" y2="22" stroke="#2196F3" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="42" y1="22" x2="48" y2="22" stroke="#2196F3" stroke-width="2.5" stroke-linecap="round"/>
-        </svg>
-        <div class="service-title">Equipment Handling</div>
-        <ul class="service-items">
-          <li>Forklift operations</li>
-          <li>Mobile crane support</li>
-          <li>Load testing services</li>
-        </ul>
-      </div>
+      <div class="service-card"><div class="service-title">Heavy Rigging</div><p>Expert slinging, lifting, and technical rigging for heavy industrial components.</p></div>
+      <div class="service-card"><div class="service-title">Machine Moving</div><p>Precision relocation of factory lines and sensitive industrial equipment.</p></div>
+      <div class="service-card"><div class="service-title">Shutdown Support</div><p>24/7 rigging teams for rapid industrial maintenance and shutdowns.</p></div>
     </div>
   </div>
 </section>
 
-<!-- CLIENTS -->
-<section class="section clients-section" id="clients">
-  <div class="section-inner">
-    <div class="section-eyebrow">Who We Work With</div>
-    <h2 class="section-title">Major Clients</h2>
-    <div class="section-line"></div>
-    <div class="clients-grid">
-      <div class="client-card">
-        <div class="client-name">Tiger Consumer Brands Ltd</div>
-        <div class="client-div">Snacks, Treats &amp; Beverages</div>
-        <div class="client-loc">Mobeni &amp; Jacobs, KZN</div>
-      </div>
-      <div class="client-card">
-        <div class="client-name">Tiger Consumer Brands Ltd</div>
-        <div class="client-div">Tastic Rice Division</div>
-        <div class="client-loc">KwaZulu-Natal</div>
-      </div>
-      <div class="client-card">
-        <div class="client-name">Kerry Ingredients SA (Pty) Ltd</div>
-        <div class="client-div">Kerry Flavours &amp; Ingredients</div>
-        <div class="client-loc">Hillcrest, Durban</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HSE -->
-<section class="section hse-section" id="hse">
-  <div class="section-inner">
-    <div class="hse-grid">
-      <div>
-        <div class="section-eyebrow">Safety First</div>
-        <h2 class="section-title">Health, Safety &amp; Environment</h2>
-        <div class="section-line"></div>
-        <p style="font-size:15px;line-height:1.8;color:#90A4AE;margin-bottom:32px;">Safety is integrated into every aspect of our operations. We maintain a safe working environment for employees, clients, contractors, and the public.</p>
-        <div class="hse-list">
-          <div class="hse-item"><span class="hse-check">✔</span><span class="hse-text">Full compliance with the Occupational Health &amp; Safety Act (OHSA)</span></div>
-          <div class="hse-item"><span class="hse-check">✔</span><span class="hse-text">Risk assessments and documented safe work procedures</span></div>
-          <div class="hse-item"><span class="hse-check">✔</span><span class="hse-text">Toolbox talks and comprehensive safety inductions</span></div>
-          <div class="hse-item"><span class="hse-check">✔</span><span class="hse-text">PPE compliance monitoring and enforcement</span></div>
-          <div class="hse-item"><span class="hse-check">✔</span><span class="hse-text">Regular equipment inspection and certification</span></div>
-          <div class="hse-item"><span class="hse-check">✔</span><span class="hse-text">Incident prevention, reporting and environmental responsibility</span></div>
-        </div>
-      </div>
-      <div class="hse-right">
-        <div class="hse-numbers">
-          <div class="hse-num-card"><div class="hse-big-num">Zero</div><div class="hse-num-label">Incident Policy</div></div>
-          <div class="hse-num-card"><div class="hse-big-num">100%</div><div class="hse-num-label">OHSA Compliant</div></div>
-          <div class="hse-num-card"><div class="hse-big-num">All</div><div class="hse-num-label">Riggers Certified</div></div>
-          <div class="hse-num-card"><div class="hse-big-num">Full</div><div class="hse-num-label">PPE Enforcement</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- VALUES -->
-<section class="section values-section" id="values">
-  <div class="section-inner">
-    <div class="section-eyebrow">What Drives Us</div>
-    <h2 class="section-title">Core Values</h2>
-    <div class="section-line"></div>
-    <div class="values-grid">
-      <div class="value-card"><div class="value-title">Safety</div><div class="value-desc">Safety is at the core of every decision and operation we undertake — no compromise, ever.</div></div>
-      <div class="value-card"><div class="value-title">Integrity</div><div class="value-desc">Honest, transparent and ethical conduct in all our business dealings and partnerships.</div></div>
-      <div class="value-card"><div class="value-title">Professionalism</div><div class="value-desc">Maintaining the highest standard of workmanship and professional conduct on every site.</div></div>
-      <div class="value-card"><div class="value-title">Reliability</div><div class="value-desc">Consistent delivery on commitments — on time and to specification, every single time.</div></div>
-      <div class="value-card"><div class="value-title">Accountability</div><div class="value-desc">We own our actions and take full responsibility for outcomes on every project.</div></div>
-      <div class="value-card"><div class="value-title">Excellence</div><div class="value-desc">Continuous improvement in everything we do — driven by a passion for exceptional results.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
 <section class="section contact-section" id="contact">
   <div class="section-inner">
-    <div class="section-eyebrow">Work With Us</div>
-    <h2 class="section-title">Get In Touch</h2>
-    <div class="section-line"></div>
     <div class="contact-grid">
-      <div class="contact-info">
-        <div class="contact-item">
-          <span class="contact-icon">📍</span>
-          <div><div class="contact-label">Location</div><div class="contact-value">791 Bluff Road, Bluff</div><div class="contact-value-sm">KwaZulu-Natal, South Africa</div></div>
-        </div>
-        <div class="contact-item">
-          <span class="contact-icon">✉️</span>
-          <div><div class="contact-label">Email</div><div class="contact-value">machine.moving@bowzer.co.za</div></div>
-        </div>
-        <div class="contact-item">
-          <span class="contact-icon">📞</span>
-          <div>
-            <div class="contact-label">Phone</div>
-            <div class="contact-value">Admin (D. Hewitt): 073 942 5299</div>
-            <div class="contact-value-sm">Office Mgr (B. Strydom): 076 407 6292</div>
-            <div class="contact-value-sm">Lead Rigger (M. Miya): 078 324 6125</div>
-            <div class="contact-value-sm">Supervisor (K. Charlton): 078 909 3484</div>
-          </div>
-        </div>
-        <div class="contact-item">
-          <span class="contact-icon">🌐</span>
-          <div><div class="contact-label">Website</div><div class="contact-value">www.bowzer.co.za</div></div>
-        </div>
+      <div>
+        <h2 class="section-title">Work With Us</h2>
+        <p>machine.moving@bowzer.co.za</p>
+        <p>Bluff, KwaZulu-Natal</p>
       </div>
-      <div class="contact-cta">
-        <div class="contact-cta-title">Ready to lift the load?</div>
-        <p class="contact-cta-text">Whether it's a scheduled machinery move, an emergency lift, or a major industrial shutdown — our team is available and equipped to deliver. Contact us for a competitive quote.</p>
-        <div style="display:flex;flex-direction:column;gap:12px;">
-          <div style="font-size:13px;color:#546E7A;letter-spacing:1px;text-transform:uppercase;">Company Registration</div>
-          <div style="font-size:14px;color:#90A4AE;">Reg: 1999/035030/23 &nbsp;·&nbsp; VAT: 4200189027</div>
-          <div style="font-size:14px;color:#90A4AE;">BBBEE Level 4 Contributor</div>
-        </div>
-        <a href="mailto:machine.moving@bowzer.co.za" class="btn-primary" style="display:inline-block;text-align:center;margin-top:8px;">Send an Enquiry</a>
+      <div style="background:rgba(255,255,255,0.05); padding:40px; border-radius:4px;">
+        <h3>Request a Site Inspection</h3>
+        <p>Our lead riggers are available for technical assessments across KZN.</p>
+        <br>
+        <a href="mailto:machine.moving@bowzer.co.za" class="btn-primary">Email the Office</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div>
-      <div class="footer-brand">BOWZER <span>MACHINE MOVERS CC</span></div>
-      <div class="footer-reg">Reg: 1999/035030/23 · VAT: 4200189027 · BBBEE Level 4</div>
-    </div>
-    <div class="footer-right">
-      791 Bluff Road, Bluff, KZN<br/>
-      machine.moving@bowzer.co.za<br/>
-      © 2025 Bowzer Machine Movers CC. All rights reserved.
-    </div>
+    <div class="footer-brand">BOWZER <span>MACHINE MOVERS CC</span></div>
+    <div class="footer-right">© 2025 Bowzer Machinery Rigging</div>
   </div>
 </footer>
 
